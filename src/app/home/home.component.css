@@ -1,0 +1,7 @@
+.separar {
+    border-left: 1px solid #cccc;
+}
+.conteenedor {
+    height: 100vh;
+    width: 100%;
+}

@@ -1,0 +1,87 @@
+<div class="col-12 d-flex justify-content-between conteenedor">
+  <div class="col-8">
+    <hr>
+    <h2 class="text-black-50 text-center">{{agenda}}</h2>
+    <hr>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">telefono</th>
+            <th scope="col">pais</th>
+            <th class="text-center">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contacto of contactos">
+            <td>{{contacto.nombres}}</td>
+            <td>{{contacto.apellidos}}</td>
+            <td>{{contacto.ciudad}}</td>
+            <td>{{contacto.direccion}}</td>
+            <td>{{contacto.telefono}}</td>
+            <td>{{contacto.pais}}</td>
+            <td *ngIf="borrar" class="form-inline d-flex justify-content-around">
+              <button class="btn btn-sm btn-outline-warning" (click)="showDelete()">X</button>
+            </td>
+            <td *ngIf="!borrar" class=" d-flex justify-content-around">
+              <button class="btn btn-sm btn-warning" (click)="showForm()">X</button>
+              <button class="btn btn-sm btn-danger">Conf</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-4 separar">
+    <div class="col-12 contenedor-agenda">
+      <hr>
+      <h2 class="text-black-50 text-center">{{titulo}}</h2>
+      <hr>
+      <form #formContacto="ngForm" (ngSubmit)="OnSubmit()">
+        <div class="form-row">
+          <div class="form-group col-12">
+            <label for="nombre">Nombres:</label>
+            <input #nombres="ngModel" name="nombres" [(ngModel)]="Usu.nombres" class="form-control" type="text" id="nombre"
+              placeholder="Nombres" required>
+          </div>
+          <div class="form-group col-12">
+            <label for="nameC">Apellidos:</label>
+            <input #apellidos="ngModel" name="apellidos" [(ngModel)]="Usu.apellidos" id="nameC" type="text" class="form-control"
+              placeholder="Apellidos" required>
+          </div>
+          <div class="form-group col-12">
+            <label for="nameA">Ciudad:</label>
+            <input #ciudad="ngModel" name="ciudad" [(ngModel)]="Usu.ciudad" id="nameA" type="text" class="form-control"
+              placeholder="Ciudad" required>
+          </div>
+          <div class="form-group col-12">
+            <label for="address">Direccion:</label>
+            <input #direccion="ngModel" name="direccion" [(ngModel)]="Usu.direccion" id="address" type="text" class="form-control"
+              placeholder="Direccion">
+          </div>
+          <div class="form-group col-12">
+            <label for="Docu">Telefono:</label>
+            <input #telefono="ngModel" name="telefono" [(ngModel)]="Usu.telefono" id="Docu" type="number" class="form-control"
+              placeholder="Telefono" required>
+          </div>
+          <div class="form-group col-12">
+            <label for="tele">Pais:</label>
+            <select #country="ngModel" name="country" [(ngModel)]="Usu.country" class="form-control" aria-placeholder="pais">
+              <option selected value="" disabled>Pais</option>
+              <option *ngFor="let pais of pais" value="{{pais.name}}">{{pais.name}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-sm btn-success">Agregar contacto</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

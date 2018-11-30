@@ -1,0 +1,39 @@
+<div class="col-sm-12 col-md-8 col-lg-6 col-xl-5 mx-auto container-login">
+  <hr>
+  <h2 class="text-center text-black-50">{{titulo}}</h2>
+  <hr>
+  <form *ngIf="show" #formLogIn="ngForm" (ngSubmit)="OnSubmit()">
+    <div class=" form-group">
+      <label for="">Usuario</label>
+      <input #user="ngModel" name="user" [(ngModel)]="Log.user" class="form-control" type="text" required>
+    </div>
+    <div class=" form-group">
+      <label for="">Contraseña</label>
+      <input #pass="ngModel" name="pass" [(ngModel)]="Log.pass" class="form-control" type="password" autocomplete="off" required>
+    </div>
+    <div class="form-group d-flex justify-content-around">
+      <button *ngIf="formLogIn.valid" type="submit" class="btn btn-info">I</button>
+      <button (click)="showReg()" type="text" class="btn btn-info">R</button>
+    </div>
+  </form>
+
+  <form #formRegistro="ngForm" (ngSubmit)="OnSubmitt()" *ngIf="!show">
+    <div class="form-group">
+      <label>Usuario</label>
+      <input #usuario="ngModel" name="usuario" [(ngModel)]="Reg.usuario" class="form-control" type="text" required>
+    </div>
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input #contrasena="ngModel" name="contrasena" [(ngModel)]="Reg.contrasena" class="form-control" type="password" autocomplete="off" required>
+    </div>
+    <div class="form-group">
+      <label>Correo</label>
+      <input #email="ngModel" name="email" [(ngModel)]="Reg.email" [email]="true" class="form-control" type="email" required>
+    </div>
+    <div class="form-group d-flex justify-content-around">
+      <button *ngIf="formRegistro.valid" type="submit" class="btn btn-info">R</button>
+      <button (click)="showLog()" type="button" class="btn btn-info">L</button>
+    </div>
+  </form>
+
+</div>
